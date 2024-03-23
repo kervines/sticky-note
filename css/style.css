@@ -1,7 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400;1,500&family=Sansita+Swashed:wght@300..900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  background-color: #fffff0;
 }
 
 textarea {
@@ -10,6 +17,31 @@ textarea {
   resize: none;
 }
 
-.container {
+.container-stickys {
   padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.container-note {
+  position: relative;
+}
+
+.note {
+  font-size: 1.375rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  border: none;
+  color: #333;
+  padding: 2rem 1rem;
+}
+
+.close {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
 }
