@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+textarea {
+  width: 250px;
+  height: 150px;
+  resize: none;
+}
+
+.container {
+  padding: 1rem;
+}
