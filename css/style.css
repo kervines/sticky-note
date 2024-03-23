@@ -7,41 +7,98 @@
   outline: none;
 }
 
+html {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
 body {
-  background-color: #fffff0;
+  padding: 1rem;
+}
+
+input,
+textarea {
+  color: #222;
 }
 
 textarea {
   width: 250px;
-  height: 300px;
+  height: 250px;
   resize: none;
+}
+
+.container h1 {
+  text-align: center;
 }
 
 .container-stickys {
   padding: 1rem;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   gap: 1rem;
 }
 
 .container-note {
+  display: flex;
   position: relative;
+  flex-direction: column;
+  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.3);
+  height: 308px;
+}
+
+.input-title {
+  border: none;
+  padding-top: 1rem;
+  font-size: 1.375rem;
+  font-weight: 600;
+  text-align: center;
 }
 
 .note {
+  width: 100%;
+  height: 100%;
   font-size: 1.375rem;
-  font-family: 'IBM Plex Sans', sans-serif;
   border: none;
-  color: #333;
-  padding: 2rem 1rem;
+  padding: 1rem;
+}
+
+.note::placeholder,
+.input-title::placeholder {
+  color: rgba(0, 0, 0, 0.3);
 }
 
 .close {
   background-color: transparent;
   border: none;
   position: absolute;
-  right: 0.5rem;
-  top: 0.5rem;
+  right: 0.575rem;
+  bottom: 0.575rem;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.125rem;
+  padding: 2px 4px;
+  color: rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+#add-sticky {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  border: none;
+  font-size: 2rem;
+  background: linear-gradient(180deg, #ffd979 0%, #ff993a 100%);
+  color: rgba(0, 0, 0, 0.3);
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: end;
 }

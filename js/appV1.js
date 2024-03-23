@@ -8,24 +8,31 @@ function colorsRandom() {
 }
 
 getNotes().forEach((note) => {
-  const noteEl = createNote(note.id, note.content, note.color);
+  const noteEl = createNote(note.id, note.content, note.title, note.color);
   workspace.insertBefore(noteEl, btnAdd);
 });
 
-function createNote(id, content, color) {
+function createNote(id, content, title, color) {
   const div = document.createElement('div');
   div.classList.add('container-note');
 
+  const inputTitle = document.createElement('input');
+  inputTitle.classList.add('input-title');
+  inputTitle.placeholder = '#Título';
+  inputTitle.value = title;
+  inputTitle.style.backgroundColor = color;
+  div.appendChild(inputTitle);
+
   const element = document.createElement('textarea');
   element.classList.add('note');
-
+  element.placeholder = 'Anota aí!';
   element.value = content;
   element.style.backgroundColor = color;
   div.appendChild(element);
 
   const btnClose = document.createElement('button');
   btnClose.classList.add('close');
-  btnClose.innerHTML = '<i class="fa-solid fa-x"></i>';
+  btnClose.innerHTML = '<i class="fa-solid fa-trash"></i>';
   div.appendChild(btnClose);
   console.log(btnClose);
 
@@ -38,9 +45,11 @@ function createNote(id, content, color) {
   });
 
   element.addEventListener('input', () => {
-    updateNote(id, element.value);
+    updateNote(id, inputTitle.value, element.value);
   });
-
+  inputTitle.addEventListener('input', () => {
+    updateNote(id, inputTitle.value, element.value);
+  });
   return div;
 }
 
@@ -50,9 +59,10 @@ function deleteNote(id, element) {
   workspace.removeChild(element);
 }
 
-function updateNote(id, content) {
+function updateNote(id, title, content) {
   const notes = getNotes();
   const [target] = notes.filter((note) => note.id == id);
+  target.title = title;
   target.content = content;
   saveNote(notes);
 }
@@ -62,9 +72,15 @@ const addNote = () => {
   const noteObj = {
     id: Math.floor(Math.random() * 1000),
     content: '',
+    title: '',
     color: colorsRandom(),
   };
-  const noteElement = createNote(noteObj.id, noteObj.content, noteObj.color);
+  const noteElement = createNote(
+    noteObj.id,
+    noteObj.content,
+    noteObj.title,
+    noteObj.color
+  );
   workspace.insertBefore(noteElement, btnAdd);
 
   notes.push(noteObj);
